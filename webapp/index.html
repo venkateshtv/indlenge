@@ -1,0 +1,28 @@
+<html ng-app="app">
+<head>
+<script src="js/angular.min.js"></script>
+<script src="js/app/app.js"></script>
+</head>
+<body ng-controller="mainCtrl">
+{{Message}}
+	
+	<table>
+	<thead>
+	<tr>
+	<th>Product</th>
+	<th ng-repeat="column in PricingData.columns track by $index ">
+	{{column}}
+	</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="index in PricingData.index track by $index">
+		<td>{{index}}</td>
+		<td ng-repeat="value in PricingData.values[$index] track by $index" style="background-color: rgb({{GetColor(value,$parent.$index)}})">
+			$ {{value}}
+		</td>
+	</tr>	
+	</tbody>
+	</table>
+</body>
+</html>
